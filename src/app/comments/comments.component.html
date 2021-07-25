@@ -1,0 +1,78 @@
+<button
+  id="btn"
+  (click)="open(content)"
+  type="button"
+  class="btn btn-primary btn-1"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Jump to comment number:
+</button>
+<br />
+<button
+  id="choosed"
+  class="btn btn-outline-primary btn-1"
+  (click)="navigate(option)"
+>
+  I choosed
+</button>
+<br /><br />
+<br />
+<button id="choosed" class="btn btn-outline-success btn-1" (click)="clickLast()">
+  Jump to last comment
+</button>
+<br />
+<button id="choosed" class="btn btn-outline-warning btn-1" (click)="navigate('1')">
+  Jump to first comment
+</button>
+
+<ul
+  class="list-group"
+  *ngFor="let comment of articleComments"
+  id="com{{ comment.id }}"
+>
+  <li class="list-group-item d-flex justify-content-between align-items-center comment">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold title">{{ comment.title }}</div>
+      {{ comment.content }}
+    </div>
+    <span class="badge badge-primary badge-pill">{{ comment.id }}</span>
+  </li>
+</ul>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true"> × </span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button
+            class="btn btn-outline-primary"
+            id="dropdownBasic1"
+            ngbDropdownToggle
+          >
+            {{ option }}
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a
+              ngbDropdownItem
+              *ngFor="let comment of articleComments"
+              (click)="choosedId(comment.id, modal)"
+            >
+              {{ comment.id }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,15 @@
+.title{
+    font-size: 19px;
+    font-weight: 700;
+    color: cornflowerblue;
+}
+
+.btn-1{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.comment{
+    padding: 25px;
+}

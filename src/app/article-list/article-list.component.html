@@ -1,0 +1,17 @@
+<div class="container body">
+  <br/>
+  <h1 class="tittle">Articles:</h1>
+    <ul class="list-group list-group-numbered" *ngFor="let article of articles">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+        id="heading{{ article.id }}"
+        (click)="handleClick(article)"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold title">{{article.title}}</div>
+          {{article.content}}
+        </div>
+        <span class="badge bg-primary rounded-pill">{{article.id}}</span>
+      </li>
+    </ul>
+</div>
